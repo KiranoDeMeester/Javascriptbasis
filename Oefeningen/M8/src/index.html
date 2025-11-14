@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smoke Test</title>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+<section id="ex-m8" class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Oefening M8 — Focus &amp; Field Monitor</span>
+                    <span class="badge bg-light text-primary">DOM properties &amp; acties</span>
+                </div>
+
+                <div class="card-body">
+
+                    <!-- Titel -->
+                    <div id="m8_group_title" class="mb-3 p-3 border rounded-3 bg-light">
+                        <label for="m8_title" class="form-label mb-1">Titel</label>
+                        <input
+                                id="m8_title"
+                                class="form-control"
+                                placeholder="bv. Mijn eerste JavaScript-project"
+                        />
+                        <div id="m8_title_help" class="form-text mt-1 text-muted">
+                            Titel is verplicht.
+                        </div>
+                    </div>
+
+                    <!-- Beschrijving -->
+                    <div id="m8_group_desc" class="mb-3 p-3 border rounded-3 bg-light">
+                        <label for="m8_desc" class="form-label mb-1">Korte beschrijving</label>
+                        <textarea
+                                id="m8_desc"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Beschrijf in minstens 10 tekens wat je project doet."
+                        ></textarea>
+                        <div id="m8_desc_help" class="form-text mt-1 text-muted">
+                            Minstens 10 tekens.
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div id="m8_group_email" class="mb-3 p-3 border rounded-3 bg-light">
+                        <label for="m8_email" class="form-label mb-1">E-mail</label>
+                        <input
+                                id="m8_email"
+                                class="form-control"
+                                type="email"
+                                placeholder="bv. jij@voorbeeld.be"
+                        />
+                        <div id="m8_email_help" class="form-text mt-1 text-muted">
+                            E-mailadres bevat minstens een @ en een punt.
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <button id="m8_focus_btn" class="btn btn-primary w-100 mb-3">
+                        Focus op lege velden
+                    </button>
+
+                    <!-- Status -->
+                    <div
+                            id="m8_status"
+                            class="alert alert-secondary mb-3"
+                            role="status"
+                            aria-live="polite"
+                    >
+                        Nog geen velden ingevuld.
+                    </div>
+
+                    <!-- Samenvatting -->
+                    <div class="card bg-light border-0">
+                        <div class="card-header bg-white border-0 pb-1">
+                            <h6 class="card-title mb-0">Samenvatting</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <ul id="m8_summary" class="list-unstyled mb-0">
+                                <li class="text-muted">
+                                    Samenvatting verschijnt zodra alle velden geldig zijn.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div> <!-- end card-body -->
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
