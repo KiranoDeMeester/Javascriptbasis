@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Tom Vanhoutte",
+    "email": "tom@in2sites.be",
+    "city": "Torhout",
+    "role": "Webdeveloper"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Decloedt",
+    "email": "sarah.decloedt@example.com",
+    "city": "Roeselare",
+    "role": "Projectmanager"
+  },
+  {
+    "id": 3,
+    "name": "Jonas Verbeke",
+    "email": "jonas.verbeke@example.com",
+    "city": "Brugge",
+    "role": "Frontend Designer"
+  },
+  {
+    "id": 4,
+    "name": "Annelies De Backer",
+    "email": "annelies.debacker@example.com",
+    "city": "Kortrijk",
+    "role": "Content Creator"
+  },
+  {
+    "id": 5,
+    "name": "Simon Derycke",
+    "email": "simon.derycke@example.com",
+    "city": "Izegem",
+    "role": "Support Engineer"
+  }
+]

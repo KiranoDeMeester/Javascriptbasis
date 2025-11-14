@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>smoke test</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+
+<div class="card shadow-sm mt-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between justify-content-center">
+        <p>Mini opdracht : takenlijst</p>
+        <button type="button" class="btn btn-primary position-relative text-white bg-white">
+            🛒
+            <span  class="arr_count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    99+
+    <span class="visually-hidden">unread messages</span>
+  </span>
+        </button>
+    </div>
+    <div class="card-body">
+
+        <label class="form-label">Voeg een taak toe:</label>
+        <input id="arr_taak" class="form-control mb-2" placeholder="bv. taak 1">
+
+        <button id="arr_btn" class="btn btn-primary w-100 mb-2">Voeg taak toe</button>
+
+        <div class="alert alert-info mb-2">
+            Totaal taken: <span class="arr_count">0</span>
+        </div>
+
+        <div id="arr_list">
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
