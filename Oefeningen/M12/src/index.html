@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smoke Test</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+<section class="container py-4" id="ex-m11">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                    <span>Oefening M11 — Geboortedag & Verjaardagsinfo</span>
+                    <span class="badge bg-light text-secondary">Date-object</span>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="m11_date" class="form-label">Geboortedatum</label>
+                        <input id="m11_date" type="date" class="form-control" />
+                        <div class="form-text">
+                            We berekenen je leeftijd, de dag van de week waarop je geboren bent en hoe lang het nog duurt tot je volgende verjaardag.
+                        </div>
+                    </div>
+                    <button id="m11_btn" class="btn btn-secondary w-100 mb-3">Bereken gegevens</button>
+                    <div id="m11_status" class="alert alert-secondary mb-3" role="status" aria-live="polite">
+                        Vul je geboortedatum in en klik op "Bereken gegevens".
+                    </div>
+                    <div class="card bg-light border-0">
+                        <div class="card-header bg-white border-0 pb-1">
+                            <h6 class="card-title mb-0">Samenvatting</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <ul id="m11_summary" class="list-unstyled mb-0">
+                                <li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

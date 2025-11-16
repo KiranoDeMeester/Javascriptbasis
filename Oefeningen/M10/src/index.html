@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smoke Test</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+<section class="container py-4" id="ex-m9">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                    <span>Oefening M9 — Live Form Feedback & Validatie</span>
+                    <span class="badge bg-light text-info">Events & Forms</span>
+                </div>
+                <div class="card-body">
+                    <form id="m9_form" novalidate>
+                        <div class="mb-3">
+                            <label for="m9_name" class="form-label">Naam</label>
+                            <input id="m9_name" class="form-control" placeholder="bv. Tom" />
+                            <div id="m9_name_help" class="form-text text-muted">Naam is verplicht (minstens 2 tekens).</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="m9_email" class="form-label">E-mailadres</label>
+                            <input id="m9_email" type="email" class="form-control" placeholder="bv. jij@voorbeeld.be" />
+                            <div id="m9_email_help" class="form-text text-muted">E-mailadres moet een @ en een punt bevatten.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="m9_msg" class="form-label">Bericht</label>
+                            <textarea id="m9_msg" class="form-control" rows="4" placeholder="Typ hier je bericht (minstens 10 tekens)."></textarea>
+                            <div id="m9_msg_help" class="form-text text-muted">Bericht is verplicht en minstens 10 tekens lang.</div>
+                        </div>
+                        <button id="m9_submit" class="btn btn-info w-100 mb-3" type="submit">Verzend bericht</button>
+                    </form>
+                    <div id="m9_status" class="alert alert-secondary mb-3" role="status" aria-live="polite">
+                        Formulier nog niet verzonden.
+                    </div>
+                    <div class="card bg-light border-0">
+                        <div class="card-header bg-white border-0 pb-1">
+                            <h6 class="card-title mb-0">Samenvatting</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <ul id="m9_summary" class="list-unstyled mb-0">
+                                <li class="text-muted">Samenvatting verschijnt wanneer het formulier geldig is verzonden.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smoke Test</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+<section class="container py-4" id="ex-m12">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Oefening M12 — Gebruikers en admins met ES6 classes</span>
+                    <span class="badge bg-light text-primary">Classes</span>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="m12_name" class="form-label">Naam</label>
+                            <input id="m12_name" class="form-control" placeholder="bv. Sara" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="m12_age" class="form-label">Leeftijd</label>
+                            <input id="m12_age" type="number" class="form-control" placeholder="bv. 25" min="1" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="m12_role" class="form-label">Rol</label>
+                            <select id="m12_role" class="form-select">
+                                <option value="user" selected>User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="m12_add" class="btn btn-primary w-100 mb-3">Maak account</button>
+
+                    <div class="alert alert-secondary d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <span>Totaal accounts: <strong id="m12_total_count">0</strong></span>
+                        <span class="small">Users: <strong id="m12_user_count">0</strong> | Admins: <strong id="m12_admin_count">0</strong></span>
+                    </div>
+
+                    <div id="m12_list" class="row g-3" aria-live="polite">
+                        <div class="col-12">
+                            <p class="text-muted mb-0">Nog geen accounts aangemaakt, vul het formulier in en klik op "Maak account".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
