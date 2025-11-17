@@ -3,66 +3,87 @@ import * as bootstrap from 'bootstrap'
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const dateInput = document.getElementById("m11_date")
-    const btn = document.getElementById("m11_btn")
-    const status = document.getElementById("m11_status")
-    const summary = document.getElementById("m11_summary")
-    const daysOfWeek = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag']
-
-    function calculateAge(birth, now) {
-        let age = now.getFullYear() - birth.getFullYear()
-        const thisYearBirthday = new Date(now.getFullYear(), birth.getMonth(), birth.getDate())
-        if (now < thisYearBirthday) age--
-        return age
+    class User {
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+            this.role = 'User'
+        }
+        getLabel() {
+            return `${this.name} (${this.age}) is een gewone gebruiker.`
+        }
     }
 
-    function nextBirthday(birth, now) {
-        let next = new Date(now.getFullYear(), birth.getMonth(), birth.getDate())
-        if (next < now) next = new Date(now.getFullYear() + 1, birth.getMonth(), birth.getDate())
-        return next
+    class Admin extends User {
+        constructor(name, age) {
+            super(name, age)
+            this.role = 'Admin'
+        }
+        getLabel() {
+            return `${this.name} (${this.age}) is administrator.`
+        }
     }
 
-    function daysUntil(date, now) {
-        const diffMs = date - now
-        return Math.ceil(diffMs / (1000 * 60 * 60 * 24))
+    const accounts = []
+    const nameInput = document.getElementById('m12_name')
+    const ageInput = document.getElementById('m12_age')
+    const roleSelect = document.getElementById('m12_role')
+    const addBtn = document.getElementById('m12_add')
+    const totalCountEl = document.getElementById('m12_total_count')
+    const userCountEl = document.getElementById('m12_user_count')
+    const adminCountEl = document.getElementById('m12_admin_count')
+    const listEl = document.getElementById('m12_list')
+
+    function updateCounts() {
+        totalCountEl.textContent = accounts.length
+        userCountEl.textContent = accounts.filter(a => a.role === 'User').length
+        adminCountEl.textContent = accounts.filter(a => a.role === 'Admin').length
     }
 
-    function updateSummary(birth) {
-        const now = new Date()
-        const age = calculateAge(birth, now)
-        const dayName = daysOfWeek[birth.getDay()]
-        const next = nextBirthday(birth, now)
-        const remainingDays = daysUntil(next, now)
-
-        status.textContent = `Je bent ongeveer ${age} jaar oud. Je bent geboren op een ${dayName}.`
-        status.className = "alert alert-success mb-3"
-
-        summary.innerHTML = `
-      <li>Leeftijd: ${age} jaar</li>
-      <li>Geboortedag: ${dayName}</li>
-      <li>Volgende verjaardag: ${next.toLocaleDateString()}</li>
-      <li>Dagen tot volgende verjaardag: ${remainingDays}</li>
-    `
-    }
-
-    btn.addEventListener("click", () => {
-        const value = dateInput.value
-        if (!value) {
-            status.textContent = "Vul een geldige geboortedatum in."
-            status.className = "alert alert-warning mb-3"
-            summary.innerHTML = `<li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>`
+    function renderAccounts() {
+        if (!accounts.length) {
+            listEl.innerHTML = `<div class="col-12"><p class="text-muted mb-0">Nog geen accounts aangemaakt, vul het formulier in en klik op "Maak account".</p></div>`
+            updateCounts()
             return
         }
 
-        const birth = new Date(value)
-        if (isNaN(birth)) {
-            status.textContent = "Vul een geldige geboortedatum in."
-            status.className = "alert alert-warning mb-3"
-            summary.innerHTML = `<li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>`
+        listEl.innerHTML = accounts.map(acc => `
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>${acc.name}</span>
+            <span class="badge ${acc.role === 'Admin' ? 'bg-danger' : 'bg-secondary'}">${acc.role}</span>
+          </div>
+          <div class="card-body">
+            <p>Leeftijd: ${acc.age}</p>
+            <p class="text-muted small">${acc.getLabel()}</p>
+          </div>
+        </div>
+      </div>
+    `).join('')
+        updateCounts()
+    }
+
+    addBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const name = nameInput.value.trim()
+        const age = parseInt(ageInput.value)
+        const role = roleSelect.value
+
+        if (!name || !age || age <= 0) {
+            alert('Vul een geldige naam en leeftijd in.')
             return
         }
 
-        updateSummary(birth)
+        const account = role === 'admin' ? new Admin(name, age) : new User(name, age)
+        accounts.push(account)
+        renderAccounts()
+
+        nameInput.value = ''
+        ageInput.value = ''
+        roleSelect.value = 'user'
+        nameInput.focus()
     })
+
 
 })

@@ -8,87 +8,35 @@
 </head>
 
 <body>
-<section class="container py-4" id="ex-m10">
+<section class="container py-4" id="ex-m11">
     <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
-            <div class="card shadow-sm mb-4">
-                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                    <span>Oefening M10 — Toetsenbord- & Sneltoetsmonitor</span>
-                    <span class="badge bg-light text-dark">Keyboard events</span>
-                </div>
-                <div class="card-body bg-black text-white">
-                    <div class="mb-3">
-                        <div class="small text-uppercase text-muted">Laatste toets</div>
-                        <div id="m10_key_display" class="fs-1 fw-bold text-end bg-black" aria-live="polite">—</div>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="p-3 bg-dark rounded-3 h-100">
-                                <div class="small text-muted text-uppercase mb-1">Key</div>
-                                <div id="m10_key_value" class="fs-5">-</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="p-3 bg-dark rounded-3 h-100">
-                                <div class="small text-muted text-uppercase mb-1">Code</div>
-                                <div id="m10_key_code" class="fs-5">-</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 p-3 bg-dark rounded-3">
-                        <div class="small text-muted text-uppercase mb-1">Modifier keys</div>
-                        <ul id="m10_modifiers" class="mb-0 small">
-                            <li>Geen modifier keys actief.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card shadow-sm mb-4">
-                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
-                    <span>Toetsenstatistieken</span>
-                    <button id="m10_reset_stats" class="btn btn-sm btn-outline-light">Statistieken resetten</button>
-                </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-6 col-lg-3 text-center border rounded-3 p-3 h-100">
-                            <div class="small text-muted">Enter</div>
-                            <div id="m10_enter_count" class="fs-4 fw-bold">0</div>
-                            <div class="small text-muted">keer gedrukt</div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 text-center border rounded-3 p-3 h-100">
-                            <div class="small text-muted">Escape</div>
-                            <div id="m10_escape_count" class="fs-4 fw-bold">0</div>
-                            <div class="small text-muted">keer gedrukt</div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 text-center border rounded-3 p-3 h-100">
-                            <div class="small text-muted">Spatiebalk</div>
-                            <div id="m10_space_count" class="fs-4 fw-bold">0</div>
-                            <div class="small text-muted">keer gebruikt</div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 text-center border rounded-3 p-3 h-100">
-                            <div class="small text-muted">Pijltjestoetsen</div>
-                            <div id="m10_arrow_count" class="fs-4 fw-bold">0</div>
-                            <div class="small text-muted">totaal gebruikt</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm">
-                <div class="card-header bg-info text-white">Sneltoetsmodus</div>
+                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                    <span>Oefening M11 — Geboortedag & Verjaardagsinfo</span>
+                    <span class="badge bg-light text-secondary">Date-object</span>
+                </div>
                 <div class="card-body">
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="m10_shortcut_mode">
-                        <label class="form-check-label" for="m10_shortcut_mode">Sneltoetsmodus inschakelen</label>
+                    <div class="mb-3">
+                        <label for="m11_date" class="form-label">Geboortedatum</label>
+                        <input id="m11_date" type="date" class="form-control" />
+                        <div class="form-text">
+                            We berekenen je leeftijd, de dag van de week waarop je geboren bent en hoe lang het nog duurt tot je volgende verjaardag.
+                        </div>
                     </div>
-                    <ul class="small text-muted mb-3">
-                        <li><strong>Ctrl + S</strong> → Opslaan</li>
-                        <li><strong>Ctrl + P</strong> → Printen</li>
-                        <li><strong>Ctrl + Shift + N</strong> → Nieuw venster</li>
-                    </ul>
-                    <div id="m10_shortcut_status" class="alert alert-secondary mb-0" role="status" aria-live="polite">
-                        Sneltoetsmodus staat uit.
+                    <button id="m11_btn" class="btn btn-secondary w-100 mb-3">Bereken gegevens</button>
+                    <div id="m11_status" class="alert alert-secondary mb-3" role="status" aria-live="polite">
+                        Vul je geboortedatum in en klik op "Bereken gegevens".
+                    </div>
+                    <div class="card bg-light border-0">
+                        <div class="card-header bg-white border-0 pb-1">
+                            <h6 class="card-title mb-0">Samenvatting</h6>
+                        </div>
+                        <div class="card-body pt-2">
+                            <ul id="m11_summary" class="list-unstyled mb-0">
+                                <li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

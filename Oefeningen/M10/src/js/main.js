@@ -3,82 +3,78 @@ import * as bootstrap from 'bootstrap'
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    function isNameValid(value) { return value.trim().length >= 2 }
-    function isEmailValid(value) { return value.includes("@") && value.includes(".") }
-    function isMsgValid(value) { return value.trim().length >= 10 }
+    let enterCount = 0, escapeCount = 0, spaceCount = 0, arrowCount = 0
 
-    function updateField(input, help, valid, okText, failText) {
-        help.textContent = valid ? okText : failText
-        help.className = `form-text mt-1 ${valid ? "text-success" : "text-danger"}`
-        input.classList.toggle("is-valid", valid)
-        input.classList.toggle("is-invalid", !valid)
+    const keyDisplay = document.getElementById("m10_key_display")
+    const keyValue = document.getElementById("m10_key_value")
+    const keyCode = document.getElementById("m10_key_code")
+    const modifiersList = document.getElementById("m10_modifiers")
+    const enterElem = document.getElementById("m10_enter_count")
+    const escapeElem = document.getElementById("m10_escape_count")
+    const spaceElem = document.getElementById("m10_space_count")
+    const arrowElem = document.getElementById("m10_arrow_count")
+    const shortcutModeCheckbox = document.getElementById("m10_shortcut_mode")
+    const shortcutStatus = document.getElementById("m10_shortcut_status")
+
+    function updateDisplay(e) {
+        keyDisplay.textContent = e.key
+        keyValue.textContent = e.key
+        keyCode.textContent = e.code
+
+        const mods = []
+        if(e.ctrlKey) mods.push("Ctrlingedrukt")
+        if(e.altKey) mods.push("Altingedrukt")
+        if(e.shiftKey) mods.push("Shiftingedrukt")
+        modifiersList.innerHTML = mods.length ? mods.map(m => `<li>${m}</li>`).join("") : "<li>Geen modifier keys actief.</li>"
     }
 
-    function validateAll() {
-        const name = document.getElementById("m9_name")
-        const email = document.getElementById("m9_email")
-        const msg = document.getElementById("m9_msg")
-        return {
-            name: isNameValid(name.value),
-            email: isEmailValid(email.value),
-            msg: isMsgValid(msg.value)
+    function updateCounters(e) {
+        switch(e.key){
+            case "Enter": enterCount++; enterElem.textContent = enterCount; break
+            case "Escape": escapeCount++; escapeElem.textContent = escapeCount; break
+            case " ": spaceCount++; spaceElem.textContent = spaceCount; break
+            case "ArrowUp":
+            case "ArrowDown":
+            case "ArrowLeft":
+            case "ArrowRight":
+                arrowCount++; arrowElem.textContent = arrowCount; break
         }
     }
 
-    function updateSummaryAndStatus(isSubmit=false) {
-        const statusBox = document.getElementById("m9_status")
-        const summary = document.getElementById("m9_summary")
-        const valid = validateAll()
-        const count = Object.values(valid).filter(v => v).length
-
-        if(isSubmit) {
-            if(count < 3) {
-                statusBox.textContent = "Er zijn nog fouten in het formulier. Controleer de gemarkeerde velden."
-                statusBox.className = "alert alert-warning mb-3"
-            } else {
-                statusBox.textContent = "Formulier is geldig en werd virtueel verzonden."
-                statusBox.className = "alert alert-success mb-3"
-            }
+    function checkShortcuts(e) {
+        if(!shortcutModeCheckbox.checked) {
+            shortcutStatus.textContent = "Sneltoetsmodus staat uit."
+            shortcutStatus.className = "alert alert-secondary mb-0"
+            return
         }
 
-        if(count === 3) {
-            summary.innerHTML = `
-        <li>Naam: ${document.getElementById("m9_name").value}</li>
-        <li>E-mail: ${document.getElementById("m9_email").value}</li>
-        <li>Bericht: ${document.getElementById("m9_msg").value}</li>
-      `
+        if(e.ctrlKey && e.key.toLowerCase() === "s") {
+            e.preventDefault()
+            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + S (Opslaan)"
+            shortcutStatus.className = "alert alert-success mb-0"
+        } else if(e.ctrlKey && e.key.toLowerCase() === "p") {
+            e.preventDefault()
+            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + P (Printen)"
+            shortcutStatus.className = "alert alert-success mb-0"
+        } else if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "n") {
+            e.preventDefault()
+            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + Shift + N (Nieuw venster)"
+            shortcutStatus.className = "alert alert-success mb-0"
         } else {
-            summary.innerHTML = `<li class="text-muted">Samenvatting verschijnt wanneer het formulier geldig is verzonden.</li>`
+            shortcutStatus.textContent = "Geen bekende sneltoets."
+            shortcutStatus.className = "alert alert-info mb-0"
         }
     }
 
-    function handleField(inputId, helpId, validator, okText, failText) {
-        const input = document.getElementById(inputId)
-        const help = document.getElementById(helpId)
+    document.addEventListener("keydown", e => {
+        updateDisplay(e)
+        updateCounters(e)
+        checkShortcuts(e)
+    })
 
-        input.addEventListener("input", () => {
-            updateField(input, help, validator(input.value), okText, failText)
-            updateSummaryAndStatus()
-        })
-        input.addEventListener("blur", () => {
-            updateField(input, help, validator(input.value), okText, failText)
-            updateSummaryAndStatus()
-        })
-    }
-
-    handleField("m9_name", "m9_name_help", isNameValid, "Naam is ok", "Naam is verplicht (minstens 2 tekens)")
-    handleField("m9_email", "m9_email_help", isEmailValid, "E-mail is ok", "E-mailadres moet een @ en een punt bevatten")
-    handleField("m9_msg", "m9_msg_help", isMsgValid, "Bericht is ok", "Bericht is verplicht (minstens 10 tekens)")
-
-    document.getElementById("m9_form").addEventListener("submit", (e) => {
-        e.preventDefault()
-        const valid = validateAll()
-
-        updateField(document.getElementById("m9_name"), document.getElementById("m9_name_help"), valid.name, "Naam is ok", "Naam is verplicht (minstens 2 tekens)")
-        updateField(document.getElementById("m9_email"), document.getElementById("m9_email_help"), valid.email, "E-mail is ok", "E-mailadres moet een @ en een punt bevatten")
-        updateField(document.getElementById("m9_msg"), document.getElementById("m9_msg_help"), valid.msg, "Bericht is ok", "Bericht is verplicht (minstens 10 tekens)")
-
-        updateSummaryAndStatus(true)
+    document.getElementById("m10_reset_stats").addEventListener("click", () => {
+        enterCount = escapeCount = spaceCount = arrowCount = 0
+        enterElem.textContent = escapeElem.textContent = spaceElem.textContent = arrowElem.textContent = 0
     })
 
 })

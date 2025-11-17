@@ -3,78 +3,66 @@ import * as bootstrap from 'bootstrap'
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    let enterCount = 0, escapeCount = 0, spaceCount = 0, arrowCount = 0
+    const dateInput = document.getElementById("m11_date")
+    const btn = document.getElementById("m11_btn")
+    const status = document.getElementById("m11_status")
+    const summary = document.getElementById("m11_summary")
+    const daysOfWeek = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag']
 
-    const keyDisplay = document.getElementById("m10_key_display")
-    const keyValue = document.getElementById("m10_key_value")
-    const keyCode = document.getElementById("m10_key_code")
-    const modifiersList = document.getElementById("m10_modifiers")
-    const enterElem = document.getElementById("m10_enter_count")
-    const escapeElem = document.getElementById("m10_escape_count")
-    const spaceElem = document.getElementById("m10_space_count")
-    const arrowElem = document.getElementById("m10_arrow_count")
-    const shortcutModeCheckbox = document.getElementById("m10_shortcut_mode")
-    const shortcutStatus = document.getElementById("m10_shortcut_status")
-
-    function updateDisplay(e) {
-        keyDisplay.textContent = e.key
-        keyValue.textContent = e.key
-        keyCode.textContent = e.code
-
-        const mods = []
-        if(e.ctrlKey) mods.push("Ctrlingedrukt")
-        if(e.altKey) mods.push("Altingedrukt")
-        if(e.shiftKey) mods.push("Shiftingedrukt")
-        modifiersList.innerHTML = mods.length ? mods.map(m => `<li>${m}</li>`).join("") : "<li>Geen modifier keys actief.</li>"
+    function calculateAge(birth, now) {
+        let age = now.getFullYear() - birth.getFullYear()
+        const thisYearBirthday = new Date(now.getFullYear(), birth.getMonth(), birth.getDate())
+        if (now < thisYearBirthday) age--
+        return age
     }
 
-    function updateCounters(e) {
-        switch(e.key){
-            case "Enter": enterCount++; enterElem.textContent = enterCount; break
-            case "Escape": escapeCount++; escapeElem.textContent = escapeCount; break
-            case " ": spaceCount++; spaceElem.textContent = spaceCount; break
-            case "ArrowUp":
-            case "ArrowDown":
-            case "ArrowLeft":
-            case "ArrowRight":
-                arrowCount++; arrowElem.textContent = arrowCount; break
-        }
+    function nextBirthday(birth, now) {
+        let next = new Date(now.getFullYear(), birth.getMonth(), birth.getDate())
+        if (next < now) next = new Date(now.getFullYear() + 1, birth.getMonth(), birth.getDate())
+        return next
     }
 
-    function checkShortcuts(e) {
-        if(!shortcutModeCheckbox.checked) {
-            shortcutStatus.textContent = "Sneltoetsmodus staat uit."
-            shortcutStatus.className = "alert alert-secondary mb-0"
+    function daysUntil(date, now) {
+        const diffMs = date - now
+        return Math.ceil(diffMs / (1000 * 60 * 60 * 24))
+    }
+
+    function updateSummary(birth) {
+        const now = new Date()
+        const age = calculateAge(birth, now)
+        const dayName = daysOfWeek[birth.getDay()]
+        const next = nextBirthday(birth, now)
+        const remainingDays = daysUntil(next, now)
+
+        status.textContent = `Je bent ongeveer ${age} jaar oud. Je bent geboren op een ${dayName}.`
+        status.className = "alert alert-success mb-3"
+
+        summary.innerHTML = `
+      <li>Leeftijd: ${age} jaar</li>
+      <li>Geboortedag: ${dayName}</li>
+      <li>Volgende verjaardag: ${next.toLocaleDateString()}</li>
+      <li>Dagen tot volgende verjaardag: ${remainingDays}</li>
+    `
+    }
+
+    btn.addEventListener("click", () => {
+        const value = dateInput.value
+        if (!value) {
+            status.textContent = "Vul een geldige geboortedatum in."
+            status.className = "alert alert-warning mb-3"
+            summary.innerHTML = `<li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>`
             return
         }
 
-        if(e.ctrlKey && e.key.toLowerCase() === "s") {
-            e.preventDefault()
-            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + S (Opslaan)"
-            shortcutStatus.className = "alert alert-success mb-0"
-        } else if(e.ctrlKey && e.key.toLowerCase() === "p") {
-            e.preventDefault()
-            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + P (Printen)"
-            shortcutStatus.className = "alert alert-success mb-0"
-        } else if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "n") {
-            e.preventDefault()
-            shortcutStatus.textContent = "Sneltoets gedetecteerd: Ctrl + Shift + N (Nieuw venster)"
-            shortcutStatus.className = "alert alert-success mb-0"
-        } else {
-            shortcutStatus.textContent = "Geen bekende sneltoets."
-            shortcutStatus.className = "alert alert-info mb-0"
+        const birth = new Date(value)
+        if (isNaN(birth)) {
+            status.textContent = "Vul een geldige geboortedatum in."
+            status.className = "alert alert-warning mb-3"
+            summary.innerHTML = `<li class="text-muted">Samenvatting verschijnt zodra een geldige geboortedatum is berekend.</li>`
+            return
         }
-    }
 
-    document.addEventListener("keydown", e => {
-        updateDisplay(e)
-        updateCounters(e)
-        checkShortcuts(e)
-    })
-
-    document.getElementById("m10_reset_stats").addEventListener("click", () => {
-        enterCount = escapeCount = spaceCount = arrowCount = 0
-        enterElem.textContent = escapeElem.textContent = spaceElem.textContent = arrowElem.textContent = 0
+        updateSummary(birth)
     })
 
 })
