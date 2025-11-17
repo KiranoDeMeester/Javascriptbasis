@@ -7,10 +7,9 @@ import * as bootstrap from 'bootstrap'
 //eigen js
 function maakProfielZin(naam, stad, hobby) {
     return `
-Hey, ik ben ${naam} uit ${stad}.
-Mijn hobby is ${hobby}.
-Leuk je te ontmoeten!
-  `;
+        Hey, ik ben ${naam} uit ${stad}.
+        Mijn hobby is ${hobby}.
+        Leuk je te ontmoeten!`;
 }
 
 function toonProfiel() {
