@@ -1,0 +1,147 @@
+// Type kleuren
+$type-colors: (
+        normal: #A8A77A,
+        fire: #EE8130,
+        water: #6390F0,
+        electric: #F7D02C,
+        grass: #7AC74C,
+        ice: #96D9D6,
+        fighting: #C22E28,
+        poison: #A33EA1,
+        ground: #E2BF65,
+        flying: #A98FF3,
+        psychic: #F95587,
+        bug: #A6B91A,
+        rock: #B6A136,
+        ghost: #735797,
+        dragon: #6F35FC,
+        dark: #705746,
+        steel: #B7B7CE,
+        fairy: #D685AD
+);
+
+.pokemon-card {
+  width: 200px;
+  height: 340px;
+  perspective: 600px;
+  cursor: pointer;
+  margin: 0.5rem;
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 0.75rem;
+  }
+
+  &.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  }
+
+  .card-front {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid #fff3;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    position: relative;
+    border-radius: 0.75rem;
+    background-color: #222;
+    color: white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.2);
+      border-radius: 0.75rem;
+      z-index: 0;
+    }
+
+    * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .card-header {
+    width: 100%;
+    padding: 0.25rem 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .card-img-top {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin: 0.25rem auto;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+}
+
+// Pack row horizontaal
+.pack-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+// Confetti
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: hsl(50,100%,50%);
+  transform: rotate(45deg);
+  animation: fall 1s linear forwards;
+}
+@keyframes fall {
+  0%{opacity:1;transform:translateY(0) rotate(0deg);}
+  100%{opacity:0;transform:translateY(150px) rotate(360deg);}
+}
+
+// Knop pop animatie
+@keyframes pop {
+  0%{transform: scale(1);}
+  50%{transform: scale(1.3);}
+  100%{transform: scale(1);}
+}
+.pop {
+  animation: pop 0.3s ease;
+}
