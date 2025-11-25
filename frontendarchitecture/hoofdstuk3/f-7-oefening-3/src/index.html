@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm border-success">
+        <div class="card-header bg-success text-white">
+            Oefening 3 – SessionStoreSingleton
+        </div>
+        <div class="card-body">
+
+            <div class="mb-3">
+                <input id="sess_username" class="form-control" placeholder="Gebruikersnaam">
+            </div>
+
+            <div class="d-flex gap-2 mb-3">
+                <button id="sess_btn_login" class="btn btn-success w-50">Login</button>
+                <button id="sess_btn_logout" class="btn btn-outline-danger w-50">Logout</button>
+            </div>
+
+            <p>Status: <strong><span id="sess_out_status">Niet ingelogd</span></strong></p>
+            <p>Gebruiker: <strong><span id="sess_out_user">-</span></strong></p>
+
+            <button id="sess_btn_refresh" class="btn btn-outline-success w-100 mt-2">
+                Toon sessie-info
+            </button>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm border-info">
+        <div class="card-header bg-info text-white">
+            Oefening 1 – ALERT via EventBus
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h6>Publisher</h6>
+                    <div class="mb-3">
+                        <label for="ex1_alert_msg" class="form-label">Alert bericht</label>
+                        <input id="ex1_alert_msg" class="form-control" placeholder="Typ iets">
+                    </div>
+                    <button id="ex1_btn_send" class="btn btn-info w-100">
+                        Publish ALERT
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <h6>Observer</h6>
+                    <ul id="ex1_alert_list" class="list-group small"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

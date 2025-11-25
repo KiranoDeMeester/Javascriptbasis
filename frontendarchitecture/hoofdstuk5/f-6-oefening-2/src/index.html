@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm border-success">
+        <div class="card-header bg-success text-white">
+            Oefening 2 – Producten-app met Service & UI (SoC)
+        </div>
+        <div class="card-body">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-5">
+                    <label for="ex2_product_name" class="form-label">Productnaam</label>
+                    <input id="ex2_product_name" class="form-control" placeholder="Bijv. Laptop">
+                </div>
+                <div class="col-md-3">
+                    <label for="ex2_product_price" class="form-label">Prijs (€)</label>
+                    <input id="ex2_product_price" type="number" class="form-control" placeholder="Bijv. 999">
+                </div>
+                <div class="col-md-4">
+                    <button id="ex2_btn_add" class="btn btn-success w-100">
+                        Voeg product toe
+                    </button>
+                </div>
+            </div>
+
+            <hr>
+
+            <ul id="ex2_product_list" class="list-group mb-3"></ul>
+            <div id="ex2_total" class="alert alert-secondary mb-0">
+                Totaal: €0.00
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

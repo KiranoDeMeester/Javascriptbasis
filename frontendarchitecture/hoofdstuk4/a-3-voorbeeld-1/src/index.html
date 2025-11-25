@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            Voorbeeld 1 – Simpele EventBus demo
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h6>Publisher (zender)</h6>
+                    <div class="mb-3">
+                        <label for="ev_message" class="form-label">Bericht</label>
+                        <input id="ev_message" class="form-control" placeholder="Typ een bericht">
+                    </div>
+                    <button id="ev_btn_send" class="btn btn-info w-100">
+                        Publish "MESSAGE" event
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <h6>Observer (ontvanger)</h6>
+                    <p>Ontvangen berichten:</p>
+                    <ul id="ev_messages_list" class="list-group small"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

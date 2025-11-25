@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            Voorbeeld 2 – LoggerSingleton (centraal logboek)
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button id="log_btn_modA" class="btn btn-secondary">
+                    Log vanuit module A
+                </button>
+                <button id="log_btn_modB" class="btn btn-dark">
+                    Log vanuit module B
+                </button>
+                <button id="log_btn_clear" class="btn btn-outline-secondary">
+                    Log leegmaken
+                </button>
+            </div>
+            <h6>Logboek</h6>
+            <ul id="log_list" class="list-group small"></ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            Voorbeeld 3 – Producten & Cart via EventBus
+            <span>
+        Cart items:
+        <span id="ob_cart_badge" class="badge bg-light text-dark">0</span>
+      </span>
+        </div>
+        <div class="card-body">
+            <div class="row g-3" id="ob_products_container">
+                <!-- Producten worden via JS ingevoegd -->
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Inhoud cart (via Observer)
+        </div>
+        <div class="card-body">
+            <ul id="ob_cart_list" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

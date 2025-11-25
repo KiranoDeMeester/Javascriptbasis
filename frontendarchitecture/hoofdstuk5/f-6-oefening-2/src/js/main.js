@@ -1,0 +1,11 @@
+// Import our custom CSS
+import '../scss/styles.scss'
+
+// Import all of Bootstrap’s JS
+import * as bootstrap from 'bootstrap'
+
+//eigen js
+/*
+Je maakt een simpele productenlijst, maar nu met SoC.
+* */
+

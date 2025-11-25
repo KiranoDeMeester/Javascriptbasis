@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            Voorbeeld 3 – CartStoreSingleton
+            <span>
+        Cart items:
+        <span id="cart_badge" class="badge bg-light text-dark">0</span>
+      </span>
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="border rounded p-3">
+                        <h5>Laptop</h5>
+                        <p class="mb-2">€999</p>
+                        <button data-product="Laptop" class="btn btn-sm btn-success btn_add_to_cart">
+                            Voeg toe aan cart
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="border rounded p-3">
+                        <h5>Monitor</h5>
+                        <p class="mb-2">€249</p>
+                        <button data-product="Monitor" class="btn btn-sm btn-success btn_add_to_cart">
+                            Voeg toe aan cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Inhoud cart
+        </div>
+        <div class="card-body">
+            <ul id="cart_list" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

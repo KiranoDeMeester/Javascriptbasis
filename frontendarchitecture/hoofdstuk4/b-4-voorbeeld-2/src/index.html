@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>frontend architecture</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            Voorbeeld 2 – NotificationCenter (nieuws-ticker)
+        </div>
+        <div class="card-body">
+            <p class="mb-2">
+                Elke 3 seconden wordt er een "NEWS" event gepublished.
+            </p>
+            <button id="news_btn_start" class="btn btn-primary me-2">
+                Start nieuws
+            </button>
+            <button id="news_btn_stop" class="btn btn-outline-light">
+                Stop nieuws
+            </button>
+
+            <hr>
+
+            <h6>Nieuwsfeed</h6>
+            <ul id="news_list" class="list-group small"></ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
