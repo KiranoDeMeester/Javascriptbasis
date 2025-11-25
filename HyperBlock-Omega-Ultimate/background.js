@@ -1,8 +1,15 @@
-importScripts("engine/updater.js","engine/sanitizer.js","engine/fingerprint.js","engine/mlCleaner.js");
+import { updateRules } from "./engine/updater.js";
+import { sanitizeRequest } from "./engine/sanitizer.js";
+import { heuristicClean } from "./engine/mlCleaner.js";
 
-chrome.runtime.onInstalled.addListener(()=>updateRules());
-chrome.runtime.onStartup.addListener(()=>updateRules());
+// Bij installatie of startup: update regels
+chrome.runtime.onInstalled.addListener(() => updateRules());
+chrome.runtime.onStartup.addListener(() => updateRules());
 
-chrome.runtime.onMessage.addListener((msg,sender,sendResponse)=>{
-    if(msg.type==="updateRules"){ updateRules(); sendResponse({status:"ok"}); }
+// Luister naar berichten van popup of content scripts
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    if(msg.type === "updateRules") {
+        updateRules();
+        sendResponse({status: "ok"});
+    }
 });

@@ -1,6 +1,9 @@
 [
   "iframe[src*='ads']",
   "div[class*='ad']",
+  "div[class*='ads']",
   "div[class*='sponsor']",
-  "[data-ad]"
+  "[data-ad]",
+  "[data-advertising]",
+  "[data-testid*='ad']"
 ]

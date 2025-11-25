@@ -1,4 +1,7 @@
+// Neutraliseer ad-objecten
 (function() {
     const neuter = ["googletag","adsbygoogle","adService","adSlots","sponsorData"];
-    for(const key of neuter) Object.defineProperty(window,key,{value:{},writable:false,configurable:false});
+    for(const key of neuter) {
+        Object.defineProperty(window,key,{value:{},writable:false,configurable:false});
+    }
 })();

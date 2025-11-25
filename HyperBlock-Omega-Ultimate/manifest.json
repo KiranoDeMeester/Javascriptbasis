@@ -11,12 +11,19 @@
     "tabs"
   ],
   "host_permissions": ["<all_urls>"],
-  "background": { "service_worker": "background.js" },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
   "action": { "default_popup": "ui/popup.html" },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content/cosmetic.js","content/inject.js"],
+      "js": [
+        "content/fingerprint.js",
+        "content/cosmetic.js",
+        "content/inject.js"
+      ],
       "run_at": "document_start"
     }
   ]
