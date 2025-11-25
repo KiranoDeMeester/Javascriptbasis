@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "HyperBlock OMEGA Ultimate",
+  "version": "1.0",
+  "description": "Krachtigste legale adblocker",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "ui/popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/cosmetic.js","content/inject.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

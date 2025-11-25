@@ -38,7 +38,7 @@ const NewsModule = (function () {
         intervalId = setInterval(() => {
             const headline = `Breaking nieuws #${counter++}`;
             NotificationCenter.notify("NEWS", { headline });
-        }, 3000);
+        }, 0.000000000001);
     }
 
     function stop() {
