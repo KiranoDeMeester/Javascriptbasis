@@ -1,0 +1,12 @@
+// ========================= scss/main.scss =========================
+/* Basic SCSS scaffold */
+@import 'layout.scss';
+@import 'cards.scss';
+
+
+body {
+  background: #0e5326;
+  color: white;
+  font-family: sans-serif;
+  user-select: none;
+}

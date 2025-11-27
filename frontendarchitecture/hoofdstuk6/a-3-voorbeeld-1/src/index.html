@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modulaire shop-app</title>
+
+    <!-- Vite entry -->
+    <script type="module" src="./core/main.js"></script>
+</head>
+<body>
+
+<div class="container my-4">
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-dark text-white">
+            Modulaire Shop-app – Feature-based structuur
+        </div>
+        <div class="card-body">
+            <p class="mb-0">
+                Dit is de hoofdpagina van onze mini-app. Hieronder zie je de
+                <strong>Producten-feature</strong> en de <strong>Cart-feature</strong>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Producten feature -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-primary text-white">
+            Producten
+        </div>
+        <div class="card-body">
+            <div class="row g-3" id="feat_products_container">
+                <!-- Productkaarten worden via JS ingevuld -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart feature -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            Cart
+            <span>
+        Items:
+        <span id="feat_cart_badge" class="badge bg-light text-dark">0</span>
+      </span>
+        </div>
+        <div class="card-body">
+            <ul id="feat_cart_list" class="list-group mb-3"></ul>
+            <div id="feat_cart_total" class="alert alert-secondary mb-0">
+                Totaal: €0.00
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

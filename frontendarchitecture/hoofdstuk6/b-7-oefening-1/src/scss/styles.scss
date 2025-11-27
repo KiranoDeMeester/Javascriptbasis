@@ -1,0 +1,10 @@
+// =========================
+// src/scss/styles.scss
+// =========================
+
+// Bootstrap import (vereist dat "bootstrap" als dependency is geïnstalleerd)
+@import "bootstrap/scss/bootstrap";
+
+body {
+  background-color: #f8f9fa;
+}

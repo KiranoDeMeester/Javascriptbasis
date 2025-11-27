@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modulaire shop-app</title>
+
+    <!-- Vite module entry -->
+    <script type="module" src="./core/main.js"></script>
+</head>
+<body>
+
+<div class="container my-4">
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-dark text-white">
+            Modulaire Shop-app – Feature-based structuur
+        </div>
+        <div class="card-body">
+            <p class="mb-0">
+                Dit is de hoofdpagina van onze mini-app. Hieronder zie je de
+                <strong>Producten-feature</strong>, de <strong>Cart-feature</strong>,
+                de <strong>Wishlist-feature</strong> en een aparte
+                <strong>UserProfile-feature</strong> onderaan.
+            </p>
+        </div>
+    </div>
+
+    <!-- Producten feature -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-header bg-primary text-white">
+            Producten
+        </div>
+        <div class="card-body">
+            <div class="row g-3" id="feat_products_container">
+                <!-- Productkaarten worden via JS ingevuld -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart feature -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white d-flex justify-content-between">
+            Cart
+            <span>
+        Items:
+        <span id="feat_cart_badge" class="badge bg-light text-dark">0</span>
+      </span>
+        </div>
+        <div class="card-body">
+            <ul id="feat_cart_list" class="list-group mb-3"></ul>
+            <div id="feat_cart_total" class="alert alert-secondary mb-0">
+                Totaal: €0.00
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist feature -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-header bg-warning d-flex justify-content-between">
+            Wishlist
+            <span>
+        Items:
+        <span id="feat_wishlist_badge" class="badge bg-dark">0</span>
+      </span>
+        </div>
+        <div class="card-body">
+            <ul id="feat_wishlist_list" class="list-group"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- UserProfile-feature (aparte container) -->
+<div class="container my-4">
+    <div class="card shadow-sm border-info">
+        <div class="card-header bg-info text-white">
+            Oefening 2 – UserProfile-feature
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <label for="feat_user_name" class="form-label">Naam</label>
+                    <input id="feat_user_name" class="form-control" placeholder="Je naam">
+                </div>
+                <div class="col-md-5">
+                    <label for="feat_user_email" class="form-label">E-mail</label>
+                    <input id="feat_user_email" class="form-control" placeholder="Je e-mail">
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button id="feat_user_save" class="btn btn-info w-100">
+                        Bewaar
+                    </button>
+                </div>
+            </div>
+
+            <hr>
+
+            <h6>Actieve gebruiker</h6>
+            <p class="mb-1">
+                Naam:
+                <strong><span id="feat_user_out_name">-</span></strong>
+            </p>
+            <p class="mb-0">
+                E-mail:
+                <strong><span id="feat_user_out_email">-</span></strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

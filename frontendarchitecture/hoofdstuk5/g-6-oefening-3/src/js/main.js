@@ -8,27 +8,76 @@ import * as bootstrap from 'bootstrap'
 /*
 Refactor deze slechte versie
 * */
-let ex3Count = 0;
-let ex3Logs = [];
+const Ex3CounterService = (function () {
+    let count = 0;
+    let logs = [];
 
-document
-    .querySelector("#ex3_btn_inc")
-    .addEventListener("click", function () {
-        ex3Count++;
-        ex3Logs.push({
+    function increment() {
+        count++;
+        logs.push({
             time: new Date().toLocaleTimeString(),
-            value: ex3Count
+            value: count
         });
+    }
 
-        document.querySelector("#ex3_value").textContent = ex3Count;
+    function getCount() {
+        return count;
+    }
 
-        const logUl = document.querySelector("#ex3_log");
-        logUl.innerHTML = "";
-        ex3Logs.forEach(entry => {
-            const li = document.createElement("li");
-            li.className = "list-group-item d-flex justify-content-between";
-            li.innerHTML = `<span>${entry.time}</span><span>${entry.value}</span>`;
-            logUl.appendChild(li);
-        });
-    });
+    function getLogs() {
+        return [...logs];
+    }
 
+    return {
+        increment,
+        getCount,
+        getLogs
+    };
+})();
+
+// UI-laag
+const Ex3CounterUI = (function () {
+    function renderCount(count) {
+        document.querySelector("#ex3_value").textContent = count;
+    }
+
+    function renderLog(logs) {
+        const ul = document.querySelector("#ex3_log");
+        ul.innerHTML = logs
+            .map(entry => `
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>${entry.time}</span>
+                  <span>${entry.value}</span>
+                </li>
+            `)
+            .join("");
+    }
+
+    return {
+        renderCount,
+        renderLog
+    };
+})();
+
+// App-laag
+const Ex3CounterApp = (function () {
+    function init() {
+        document
+            .querySelector("#ex3_btn_inc")
+            .addEventListener("click", handleIncrement);
+    }
+
+    function handleIncrement() {
+        Ex3CounterService.increment();
+        const count = Ex3CounterService.getCount();
+        const logs = Ex3CounterService.getLogs();
+        Ex3CounterUI.renderCount(count);
+        Ex3CounterUI.renderLog(logs);
+    }
+
+    return {
+        init
+    };
+})();
+
+Ex3CounterApp.init();
